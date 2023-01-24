@@ -1,0 +1,193 @@
+-- BEST ANTI LOCK KEYBIND {V}
+
+
+
+
+getgenv().Underground = true
+
+
+
+
+getgenv().UndergroundAmount = -999
+
+
+
+
+local OK = false
+
+
+
+
+local toggle = false
+
+
+
+
+local function Notify(text)
+
+
+
+
+      game:GetService("StarterGui"):SetCore("SendNotification",
+
+
+
+
+      {
+
+
+
+
+          Title = "Anti Lock",
+
+
+
+
+          Text = text,
+
+
+
+
+          Duration = 1,
+
+
+
+
+          Button1 = ""
+
+
+
+
+      }
+
+
+
+
+      )
+
+
+
+
+  end
+
+
+
+
+game:GetService("RunService").heartbeat:Connect(function()
+
+
+
+
+  if OK == true then
+
+
+
+
+  if getgenv().Underground ~= false then
+
+
+
+
+  local vel = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
+
+
+
+
+  game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,-         getgenv().UndergroundAmount,0)
+
+
+
+
+  game:GetService("RunService").RenderStepped:Wait()
+
+
+
+
+  game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = vel
+
+
+
+
+  end
+
+
+
+
+  end
+
+
+
+
+end)
+
+
+
+
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(KeyPressed)
+
+
+
+
+if KeyPressed == "v" then
+
+
+
+
+   if toggle == false then
+
+
+
+
+toggle = true
+
+
+
+
+          OK = true
+
+
+
+
+Notify('Anti ON')
+
+
+
+
+else
+
+
+
+
+toggle = false
+
+
+
+
+      OK = false
+
+
+
+
+Notify('Anti OFF')
+
+
+
+
+end
+
+
+
+
+end
+
+
+
+
+end)
+
+
+
+
+
+
+
